@@ -8,9 +8,11 @@ class SessionsController < ApplicationController
       'zotero_key'  => auth_hash.credentials.token,
       'zotero_name' => auth_hash.info.name,
       'zotero_uid'  => auth_hash.uid
-    }.to_json
+    }
 
-    render text: data
+    zotero_user = ZoteroClient::User.new(data['zotero_uid'], data['zotero_key'])
+
+    render text: zotero_user.items.inspect
   end
 
   protected

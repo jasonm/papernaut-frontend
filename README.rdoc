@@ -2,6 +2,5 @@
 Dev notes: ~/log/2012-07-23-journal-club
 !!!!!
 
-zh = {"key" => "aiprWLeUNpR0JIuDZ3txMXtH","name" => "jayunit","uid" => 1078955}
-c = ZoteroClient::User.new(zh["uid"], zh["key"])
-c.items[0]
+_ Next, persist zotero_* data from SessionsController via User.find_or_create_from_auth_hash
+_ Then, fetch and persist their library

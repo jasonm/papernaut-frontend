@@ -61,6 +61,7 @@ GEM
     omniauth-oauth (1.0.1)
       oauth
       omniauth (~> 1.0)
+    omniauth-zotero (0.0.1)
     pg (0.14.0)
     polyglot (0.3.3)
     rack (1.4.1)
@@ -115,6 +116,7 @@ DEPENDENCIES
   jquery-rails
   omniauth
   omniauth-oauth
+  omniauth-zotero
   pg
   rails (= 3.2.7)
   sass-rails (~> 3.2.3)

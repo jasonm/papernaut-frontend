@@ -1,3 +1,7 @@
+!!!!!
+Dev notes: ~/log/2012-07-23-journal-club
+!!!!!
+
 Zotero API for getting DOI
 
 [~] curl -si https://api.zotero.org/users/1078955/items/5B9JUNQT\?key=h3ejKx0xhfiyy8puzxFpRpoM\&content=json

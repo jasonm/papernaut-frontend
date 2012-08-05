@@ -2,37 +2,6 @@
 Dev notes: ~/log/2012-07-23-journal-club
 !!!!!
 
-Zotero API for getting DOI
-
-[~] curl -si https://api.zotero.org/users/1078955/items/5B9JUNQT\?key=h3ejKx0xhfiyy8puzxFpRpoM\&content=json
-
-HTTP/1.0 200 OK
-Date: Fri, 03 Aug 2012 21:09:45 GMT
-Server: Apache/2.2.15 (CentOS)
-X-Powered-By: PHP/5.3.8
-Last-Modified: Sun, 29 Jul 2012 23:07:05 GMT
-Content-Length: 2736
-Keep-Alive: timeout=30, max=100
-Connection: keep-alive
-Content-Type: application/atom+xml
-
-<?xml version="1.0"?>
-<entry xmlns="http://www.w3.org/2005/Atom" xmlns:zapi="http://zotero.org/ns/api">
-  <title>Effects of long-term low-dose oxygen supplementation on the epithelial function, collagen metabolism and interstitial fibrogenesis in the guinea pig lung</title>
-  <author>
-    <name>jayunit</name>
-    <uri>http://zotero.org/jayunit</uri>
-  </author>
-  <id>http://zotero.org/jayunit/items/5B9JUNQT</id>
-  <published>2012-07-29T23:07:05Z</published>
-  <updated>2012-07-29T23:07:05Z</updated>
-  <link rel="self" type="application/atom+xml" href="https://api.zotero.org/users/1078955/items/5B9JUNQT?content=json"/>
-  <link rel="alternate" type="text/html" href="http://zotero.org/jayunit/items/5B9JUNQT"/>
-  <zapi:key>5B9JUNQT</zapi:key>
-  <zapi:itemType>journalArticle</zapi:itemType>
-  <zapi:creatorSummary>Aoki et al.</zapi:creatorSummary>
-  <zapi:year>2008</zapi:year>
-  <zapi:numChildren>2</zapi:numChildren>
-  <zapi:numTags>0</zapi:numTags>
-  <content zapi:type="json" zapi:etag="8c7d239b931e96f57aefee645581b112">{"itemType":"journalArticle","title":"Effects of long-term low-dose oxygen supplementation on the epithelial function, collagen metabolism and interstitial fibrogenesis in the guinea pig lung","creators":[{"creatorType":"author","firstName":"Takuya","lastName":"Aoki"},{"creatorType":"author","firstName":"Fumihiro","lastName":"Yamasawa"},{"creatorType":"author","firstName":"Takeo","lastName":"Kawashiro"},{"creatorType":"author","firstName":"Tetsuichi","lastName":"Shibata"},{"creatorType":"author","firstName":"Akitoshi","lastName":"Ishizaka"},{"creatorType":"author","firstName":"Tetsuya","lastName":"Urano"},{"creatorType":"author","firstName":"Yasumasa","lastName":"Okada"}],"abstractNote":"The patient population receiving long-term oxygen therapy has increased with the rising morbidity of COPD. Although high-dose oxygen induces pulmonary edema and interstitial fibrosis, potential lung injury caused by long-term exposure to low-dose oxygen has not been fully analyzed. This study was designed to clarify the effects of long-term low-dose oxygen inhalation on pulmonary epithelial function, edema formation, collagen metabolism, and alveolar fibrosis.","publicationTitle":"Respiratory Research","volume":"9","issue":"1","pages":"37","date":"2008-04-26","series":"","seriesTitle":"","seriesText":"","journalAbbreviation":"","language":"en","DOI":"10.1186/1465-9921-9-37","ISSN":"1465-9921","shortTitle":"","url":"http://respiratory-research.com/content/9/1/37/abstract","accessDate":"2012-07-29 23:07:05","archive":"","archiveLocation":"","libraryCatalog":"respiratory-research.com","callNumber":"","rights":"2008 Aoki et al; licensee BioMed Central Ltd.","extra":"","tags":[]}</content>
-</entry>
+zh = {"key" => "aiprWLeUNpR0JIuDZ3txMXtH","name" => "jayunit","uid" => 1078955}
+c = ZoteroClient::User.new(zh["uid"], zh["key"])
+c.items[0]

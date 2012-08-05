@@ -9,6 +9,8 @@ gem 'pg'
 gem 'omniauth'
 gem 'omniauth-oauth'
 gem 'omniauth-zotero'
+gem 'faraday'
+gem 'ratom', require: 'atom'
 
 # Gems used only for assets and not required
 # in production environments by default.

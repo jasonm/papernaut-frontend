@@ -2,4 +2,6 @@
 
 <p><a href="/auth/zotero">Zotero OAuth</a></p>
 
+<%= link_to "Sign in with Devise Zotero", user_omniauth_authorize_path(:zotero) %>
+
 <p>Current user: <%= current_user.inspect %></p>

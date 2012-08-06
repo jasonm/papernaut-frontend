@@ -1,4 +1,6 @@
 JournalclubFrontend::Application.routes.draw do
+  devise_for :users
+
   root to: 'welcome#index'
 
   match 'auth/zotero/callback' => 'sessions#create'

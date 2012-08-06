@@ -93,6 +93,8 @@ GEM
       activesupport (= 3.2.7)
       bundler (~> 1.0)
       railties (= 3.2.7)
+    rails-footnotes (3.7.8)
+      rails (>= 3.0.0)
     railties (3.2.7)
       actionpack (= 3.2.7)
       activesupport (= 3.2.7)
@@ -139,6 +141,7 @@ DEPENDENCIES
   omniauth-zotero
   pg
   rails (= 3.2.7)
+  rails-footnotes (>= 3.7.5.rc4)
   ratom
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)

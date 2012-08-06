@@ -5,3 +5,11 @@
 <%= link_to "Sign in with Devise Zotero", user_omniauth_authorize_path(:zotero) %>
 
 <p>Current user: <%= current_user.inspect %></p>
+
+<% if current_user.zotero? %>
+  <pre>
+    <% current_user.zotero_items.each do |item| %>
+      <%= item["title"] %> (<%= item["url"] %>)
+    <% end %>
+  </pre>
+<% end %>

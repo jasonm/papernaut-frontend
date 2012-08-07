@@ -27,8 +27,16 @@ module ZoteroClient
       @attributes = attributes
     end
 
-    def [](key)
-      @attributes[key]
+    def title
+      @attributes["title"]
+    end
+
+    def url
+      @attributes["url"]
+    end
+
+    def identifier_strings
+      
     end
   end
 end

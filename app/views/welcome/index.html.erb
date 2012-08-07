@@ -1,15 +1,32 @@
 <p>Welcome!</p>
 
-<% if signed_in? %> 
+<% if signed_in? %>
   <p>Current user: <%= current_user.inspect %></p>
   <% if current_user.zotero? %>
-    <pre>
-      <% current_user.zotero_items.each do |item| %>
-        <%= item["title"] %> (<%= item["url"] %>)
-      <% end %>
-    </pre>
+    <h2>Zotero Library</h2>
+
+    <% current_user.zotero_items.each do |item| %>
+      <%= item["title"] %> (<%= item["url"] %>)
+    <% end %>
+
+    <% if false %>
+      <ul>
+        <% @discussed_items.each do |item| %>
+          <p><%= link_to item.title, item.url %></p>
+          <% if item.discussions.any? %>
+            <strong>Discussions:</strong>
+            <ul>
+              <% item.discussions.each do |discussion| %>
+                <li><%= link_to discussion.title, discussion.url %></li>
+              <% end %>
+            </ul>
+          <% end %>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <%= link_to "Sign out", sign_out_url %>
   <% end %>
-  <%= link_to "Sign out", sign_out_url %>
 <% else %>
   <%= link_to "Connect to Zotero", user_omniauth_authorize_path(:zotero) %>
 <% end %>

@@ -14,8 +14,11 @@ class User < ActiveRecord::Base
     !!zotero_uid
   end
 
+  def zotero_user
+    ZoteroClient::User.new(zotero_uid, zotero_key)
+  end
+
   def zotero_items
-    client = ZoteroClient::User.new(zotero_uid, zotero_key)
-    client.items
+    zotero_user.items
   end
 end

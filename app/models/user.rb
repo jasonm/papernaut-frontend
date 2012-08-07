@@ -21,4 +21,8 @@ class User < ActiveRecord::Base
   def zotero_items
     zotero_user.items
   end
+
+  def zotero_articles
+    zotero_user.items.select(&:journal_article?)
+  end
 end

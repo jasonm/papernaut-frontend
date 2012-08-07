@@ -1,29 +1,39 @@
-<p>Welcome!</p>
+<h1>JournalClub Frontend</h1>
 
 <% if signed_in? %>
-  <p>Current user: <%= current_user.inspect %></p>
   <% if current_user.zotero? %>
-    <h2>Zotero Library</h2>
+    <h2>Zotero Library for <%= current_user.zotero_username %></h2>
 
-    <% current_user.zotero_items.each do |item| %>
-      <%= item["title"] %> (<%= item["url"] %>)
-    <% end %>
+    <!--
+    <pre>
+      <%= @articles.map(&:inspect).join("\n") %>
+    </pre>
+    -->
 
-    <% if false %>
-      <ul>
-        <% @discussed_items.each do |item| %>
+    <ul>
+      <% @articles.each do |item| %>
+        <li>
           <p><%= link_to item.title, item.url %></p>
-          <% if item.discussions.any? %>
-            <strong>Discussions:</strong>
+
+          <% if item.identifier_strings.any? %>
+            <p>
+            Identifiers (<%= item.identifier_strings.count %>): <%= item.identifier_strings.join(" | ") %>
+            </p>
+          <% end %>
+
+          <% discussions = Discussion.for(item) %>
+
+          <% if discussions.any? %>
+            <p>Discussions: (<%= discussions.count %>) </p>
             <ul>
-              <% item.discussions.each do |discussion| %>
+              <% discussions.each do |discussion| %>
                 <li><%= link_to discussion.title, discussion.url %></li>
               <% end %>
             </ul>
           <% end %>
-        <% end %>
-      </ul>
-    <% end %>
+        </li>
+      <% end %>
+    </ul>
 
     <%= link_to "Sign out", sign_out_url %>
   <% end %>

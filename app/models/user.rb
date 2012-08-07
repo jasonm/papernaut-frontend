@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  devise :omniauthable
+  devise :omniauthable, :authenticatable
 
   def self.find_or_create_for_zotero_oauth(auth)
     self.where(auth).first || User.new.tap do |user|

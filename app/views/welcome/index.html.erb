@@ -1,15 +1,15 @@
 <p>Welcome!</p>
 
-<p><a href="/auth/zotero">Zotero OAuth</a></p>
-
-<%= link_to "Sign in with Devise Zotero", user_omniauth_authorize_path(:zotero) %>
-
-<p>Current user: <%= current_user.inspect %></p>
-
-<% if current_user.zotero? %>
-  <pre>
-    <% current_user.zotero_items.each do |item| %>
-      <%= item["title"] %> (<%= item["url"] %>)
-    <% end %>
-  </pre>
+<% if signed_in? %> 
+  <p>Current user: <%= current_user.inspect %></p>
+  <% if current_user.zotero? %>
+    <pre>
+      <% current_user.zotero_items.each do |item| %>
+        <%= item["title"] %> (<%= item["url"] %>)
+      <% end %>
+    </pre>
+  <% end %>
+  <%= link_to "Sign out", sign_out_url %>
+<% else %>
+  <%= link_to "Connect to Zotero", user_omniauth_authorize_path(:zotero) %>
 <% end %>

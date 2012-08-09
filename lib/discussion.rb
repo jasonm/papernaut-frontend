@@ -5,7 +5,7 @@ class Discussion
   def self.for(item)
     item.identifier_strings.map do |identifier_string|
       for_identifier(identifier_string)
-    end.flatten
+    end.flatten.uniq_by(&:url)
   end
 
   def self.for_identifier(identifier_string)
@@ -29,6 +29,7 @@ class Discussion
   end
 
   private
+
   def self.get_cached_http(url)
     $http_cache ||= {}
     $http_cache[url] ||= Faraday.get(url)

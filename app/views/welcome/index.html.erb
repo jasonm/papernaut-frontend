@@ -4,33 +4,25 @@
   <% if current_user.zotero? %>
     <h2>Zotero Library for <%= current_user.zotero_username %></h2>
 
-    <!--
-    <pre>
-      <%= @articles.map(&:inspect).join("\n") %>
-    </pre>
-    -->
-
+    <h3>Articles with discussions:</h3>
     <ul>
-      <% @articles.each do |item| %>
+      <% @articles_with_discussions.each do |item| %>
         <li>
-          <p><%= link_to item.title, item.url %></p>
+          <p><%= link_to item.title, item.url %> <%= identifiers_for(item) %></p>
+          <ul>
+            <% Discussion.for(item).each do |discussion| %>
+              <li><%= link_to discussion.title, discussion.url %> <%= identifiers_for(discussion) %></li>
+            <% end %>
+          </ul>
+        </li>
+      <% end %>
+    </ul>
 
-          <% if item.identifier_strings.any? %>
-            <p>
-            Identifiers (<%= item.identifier_strings.count %>): <%= item.identifier_strings.join(" | ") %>
-            </p>
-          <% end %>
-
-          <% discussions = Discussion.for(item) %>
-
-          <% if discussions.any? %>
-            <p>Discussions: (<%= discussions.count %>) </p>
-            <ul>
-              <% discussions.each do |discussion| %>
-                <li><%= link_to discussion.title, discussion.url %></li>
-              <% end %>
-            </ul>
-          <% end %>
+    <h3>Articles without discussions:</h3>
+    <ul>
+      <% @articles_without_discussions.each do |item| %>
+        <li>
+          <p><%= link_to item.title, item.url %> <%= identifiers_for(item) %></p>
         </li>
       <% end %>
     </ul>

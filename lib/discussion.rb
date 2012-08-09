@@ -20,12 +20,16 @@ class Discussion
   end
 
   def title
-    host = URI.parse(url).host
+    host = URI.parse(url).host rescue url
     "Discussion on #{host}"
   end
 
   def url
     @attributes["url"]
+  end
+
+  def identifier_strings
+    @attributes["identifier_strings"] || []
   end
 
   private

@@ -12,6 +12,7 @@ gem 'omniauth-zotero'
 gem 'faraday'
 gem 'ratom', require: 'atom'
 gem 'devise'
+gem 'addressable'
 
 gem 'rails-footnotes', '>= 3.7.5.rc4', :group => :development
 

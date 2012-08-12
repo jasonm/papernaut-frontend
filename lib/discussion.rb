@@ -20,8 +20,7 @@ class Discussion
   end
 
   def title
-    host = URI.parse(url).host rescue url
-    "Discussion on #{host}"
+    "Discussion on #{hostname}"
   end
 
   def url
@@ -33,6 +32,10 @@ class Discussion
   end
 
   private
+
+  def hostname
+    Addressable::URI.parse(url).host
+  end
 
   def self.get_http(url)
     Faraday.get(url)

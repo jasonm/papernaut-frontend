@@ -9,7 +9,7 @@ class Discussion
   end
 
   def self.for_identifier(identifier_string)
-    url = "#{JOURNAL_CLUB_ENGINE_URL}/discussions.json?query=#{identifier_string}"
+    url = "#{JOURNAL_CLUB_ENGINE_URL}/discussions.json?query=#{CGI.escape(identifier_string)}"
     response = get_http(url)
     discussion_hashes = JSON.parse(response.body)
     discussion_hashes.map { |hash| self.new(hash) }

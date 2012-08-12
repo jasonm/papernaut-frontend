@@ -10,7 +10,7 @@ class Discussion
 
   def self.for_identifier(identifier_string)
     url = "#{JOURNAL_CLUB_ENGINE_URL}/discussions.json?query=#{identifier_string}"
-    response = get_cached_http(url)
+    response = get_http(url)
     discussion_hashes = JSON.parse(response.body)
     discussion_hashes.map { |hash| self.new(hash) }
   end
@@ -34,8 +34,7 @@ class Discussion
 
   private
 
-  def self.get_cached_http(url)
-    $http_cache ||= {}
-    $http_cache[url] ||= Faraday.get(url)
+  def self.get_http(url)
+    Faraday.get(url)
   end
 end

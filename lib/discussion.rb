@@ -2,8 +2,17 @@ require 'faraday'
 require 'json'
 
 class Discussion
-  def self.for(item)
-    item.identifier_strings.map do |identifier_string|
+  def self.of_articles(articles)
+    articles.map { |article|
+      self.for(article).map { |discussion|
+        discussion.article = article
+        discussion
+      }
+    }.flatten
+  end
+
+  def self.for(article)
+    article.identifier_strings.map do |identifier_string|
       for_identifier(identifier_string)
     end.flatten.uniq_by(&:url)
   end
@@ -14,6 +23,8 @@ class Discussion
     discussion_hashes = JSON.parse(response.body)
     discussion_hashes.map { |hash| self.new(hash) }
   end
+
+  attr_accessor :article
 
   def initialize(attributes)
     @attributes = attributes

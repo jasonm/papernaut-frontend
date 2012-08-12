@@ -1,39 +1,28 @@
-<h1>JournalClub Frontend</h1>
-
 <% if signed_in? %>
   <% if current_user.zotero? %>
-    <h2>Zotero Library for <%= current_user.zotero_username %></h2>
+    <div class="page-header">
+      <h2>Zotero Library for <%= current_user.zotero_username %></h2>
+    </div>
 
-    <h3>Articles with discussions:</h3>
     <ul>
-      <% @articles_with_discussions.each do |item| %>
+      <% @discussions.each do |discussion| %>
         <li>
+          <h3>
+            <%= link_to discussion.title, discussion.url %>
+          </h3>
+          <cite>
+            <%= link_to discussion.url, discussion.url %>
+          </cite>
           <p>
-          <%= link_to item.title, item.url %>
-          <%#= identifiers_for(item) %>
+            Article: <%= discussion.article.title %>
           </p>
-          <ul>
-            <% Discussion.for(item).each do |discussion| %>
-              <li>
-                <%= link_to discussion.title, discussion.url %>
-                <%#= identifiers_for(discussion) %>
-              </li>
-            <% end %>
-          </ul>
         </li>
       <% end %>
     </ul>
 
-    <!--
-    <h3>Articles without discussions:</h3>
-    <ul>
-      <% @articles_without_discussions.each do |item| %>
-        <li>
-          <p><%= link_to item.title, item.url %> <%= identifiers_for(item) %></p>
-        </li>
-      <% end %>
-    </ul>
-    -->
+    <p>
+      <%= pluralize @number_of_articles_without_discussions, "more article" %> without discussions.
+    </p>
   <% end %>
 <% else %>
   <%= link_to "Connect to Zotero", user_omniauth_authorize_path(:zotero) %>

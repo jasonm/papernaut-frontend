@@ -3,7 +3,7 @@ JournalclubFrontend::Application.routes.draw do
   root to: 'welcome#index'
 
   devise_scope :user do
-    get "sign_out", :to => "devise/sessions#destroy"
+    delete "sign_out", :to => "devise/sessions#destroy"
   end
 
 

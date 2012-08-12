@@ -8,16 +8,23 @@
     <ul>
       <% @articles_with_discussions.each do |item| %>
         <li>
-          <p><%= link_to item.title, item.url %> <%= identifiers_for(item) %></p>
+          <p>
+          <%= link_to item.title, item.url %>
+          <%#= identifiers_for(item) %>
+          </p>
           <ul>
             <% Discussion.for(item).each do |discussion| %>
-              <li><%= link_to discussion.title, discussion.url %> <%= identifiers_for(discussion) %></li>
+              <li>
+                <%= link_to discussion.title, discussion.url %>
+                <%#= identifiers_for(discussion) %>
+              </li>
             <% end %>
           </ul>
         </li>
       <% end %>
     </ul>
 
+    <!--
     <h3>Articles without discussions:</h3>
     <ul>
       <% @articles_without_discussions.each do |item| %>
@@ -26,8 +33,7 @@
         </li>
       <% end %>
     </ul>
-
-    <%= link_to "Sign out", sign_out_url %>
+    -->
   <% end %>
 <% else %>
   <%= link_to "Connect to Zotero", user_omniauth_authorize_path(:zotero) %>

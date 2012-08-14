@@ -1,6 +1,0 @@
-!!!!!
-Dev notes: ~/log/2012-07-23-journal-club
-!!!!!
-
-_ Next, persist zotero_* data from SessionsController via User.find_or_create_from_auth_hash
-_ Then, fetch and persist their library

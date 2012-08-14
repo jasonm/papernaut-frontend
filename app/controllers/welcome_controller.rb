@@ -1,6 +1,6 @@
 class WelcomeController < ApplicationController
   def index
-    if current_user.zotero? && current_user.mendeley
+    if signed_in? && current_user.zotero? && current_user.mendeley
       raise "TODO: show both Zotero and Mendeley libraries"
     end
 

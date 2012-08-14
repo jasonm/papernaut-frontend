@@ -24,11 +24,12 @@
       <%= pluralize @number_of_articles_without_discussions, "more article" %> without discussions.
     </p>
   <% end %>
+<% end %>
 
-  <% if !current_user.zotero? %>
-    <p><%= link_to "Connect with Zotero", user_omniauth_authorize_path(:zotero) %></p>
-  <% end %>
-  <% if !current_user.mendeley? %>
-    <p><%= link_to "Connect with Mendeley", user_omniauth_authorize_path(:mendeley) %></p>
-  <% end %>
+<% if !signed_in? || !current_user.zotero? %>
+  <p><%= link_to "Connect with Zotero", user_omniauth_authorize_path(:zotero) %></p>
+<% end %>
+
+<% if !signed_in? || !current_user.mendeley? %>
+  <p><%= link_to "Connect with Mendeley", user_omniauth_authorize_path(:mendeley) %></p>
 <% end %>

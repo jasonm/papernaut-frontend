@@ -4,21 +4,29 @@ class User < ActiveRecord::Base
 
   def self.find_or_create_for_zotero_oauth(auth)
     self.where(auth).first || User.new.tap do |user|
-      user.zotero_uid = auth['zotero_uid']
-      user.zotero_key = auth['zotero_key']
-      user.zotero_username = auth['zotero_username']
+      user.set_zotero_auth_fields(auth)
       user.save
     end
   end
 
   def self.find_or_create_for_mendeley_oauth(auth)
     self.where(auth).first || User.new.tap do |user|
-      user.mendeley_uid = auth['mendeley_uid']
-      user.mendeley_token = auth['mendeley_token']
-      user.mendeley_secret = auth['mendeley_secret']
-      user.mendeley_username = auth['mendeley_username']
+      user.set_mendeley_auth_fields(auth)
       user.save
     end
+  end
+
+  def set_zotero_auth_fields(auth)
+    self.zotero_uid = auth['zotero_uid']
+    self.zotero_key = auth['zotero_key']
+    self.zotero_username = auth['zotero_username']
+  end
+
+  def set_mendeley_auth_fields(auth)
+    self.mendeley_uid = auth['mendeley_uid']
+    self.mendeley_token = auth['mendeley_token']
+    self.mendeley_secret = auth['mendeley_secret']
+    self.mendeley_username = auth['mendeley_username']
   end
 
   def import_from_libraries

@@ -1,27 +1,39 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def zotero
-    @user = User.find_or_create_for_zotero_oauth(zotero_auth_data)
-
-    if @user.persisted?
-      flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Zotero"
-      sign_in_and_redirect @user, :event => :authentication
+    if current_user
+      current_user.set_zotero_auth_fields(zotero_auth_data)
+      current_user.save
+      redirect_to root_url, notice: "Connected to Zotero"
     else
-      raise "Could not persist user"
-      # session["devise.zotero_data"] = request.env["omniauth.auth"]
-      # redirect_to root_url
+      @user = User.find_or_create_for_zotero_oauth(zotero_auth_data)
+
+      if @user.persisted?
+        flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Zotero"
+        sign_in_and_redirect @user, :event => :authentication
+      else
+        raise "Could not persist user"
+        # session["devise.zotero_data"] = request.env["omniauth.auth"]
+        # redirect_to root_url
+      end
     end
   end
 
   def mendeley
-    @user = User.find_or_create_for_mendeley_oauth(mendeley_auth_data)
-
-    if @user.persisted?
-      flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Mendeley"
-      sign_in_and_redirect @user, :event => :authentication
+    if current_user
+      current_user.set_mendeley_auth_fields(mendeley_auth_data)
+      current_user.save
+      redirect_to root_url, notice: "Connected to Mendeley"
     else
-      raise "Could not persist user"
-      # session["devise.mendeley_data"] = request.env["omniauth.auth"]
-      # redirect_to root_url
+      @user = User.find_or_create_for_mendeley_oauth(mendeley_auth_data)
+
+      if @user.persisted?
+        flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Mendeley"
+        sign_in_and_redirect @user, :event => :authentication
+      else
+        raise "Could not persist user"
+        # session["devise.mendeley_data"] = request.env["omniauth.auth"]
+        # redirect_to root_url
+      end
     end
   end
 

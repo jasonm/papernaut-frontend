@@ -6,6 +6,8 @@ JournalclubFrontend::Application.routes.draw do
     delete "sign_out", :to => "devise/sessions#destroy"
   end
 
+  resources :imports, only: %w(new)
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -62,6 +62,7 @@ module ZoteroClient
       end
     end
 
+    # TODO: add this
     def extra_identifier_for(key)
       nil
     end

@@ -35,4 +35,20 @@ class User < ActiveRecord::Base
   def zotero_articles
     zotero_user.items.select(&:journal_article?)
   end
+
+  def mendeley?
+    !!mendeley_uid
+  end
+
+  def mendeley_user
+    MendeleyClient::User.new(mendeley_uid, mendeley_token, mendeley_secret)
+  end
+
+  def mendeley_items
+    mendeley_user.items
+  end
+
+  def mendeley_articles
+    mendeley_items.select(&:journal_article?)
+  end
 end

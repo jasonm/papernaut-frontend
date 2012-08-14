@@ -3,7 +3,15 @@
     <div class="page-header">
       <h2>Zotero Library for <%= current_user.zotero_username %></h2>
     </div>
+  <% end %>
 
+  <% if current_user.mendeley? %>
+    <div class="page-header">
+      <h2>Mendeley Library for <%= current_user.mendeley_username %></h2>
+    </div>
+  <% end %>
+
+  <% if @discussions %>
     <ul>
       <% @discussions.each do |discussion| %>
         <li>
@@ -24,6 +32,7 @@
       <%= pluralize @number_of_articles_without_discussions, "more article" %> without discussions.
     </p>
   <% end %>
+
 <% else %>
   <p><%= link_to "Connect with Zotero", user_omniauth_authorize_path(:zotero) %></p>
   <p><%= link_to "Connect with Mendeley", user_omniauth_authorize_path(:mendeley) %></p>

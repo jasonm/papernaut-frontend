@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   devise :omniauthable, :authenticatable
+  has_many :articles
 
   def self.find_or_create_for_zotero_oauth(auth)
     self.where(auth).first || User.new.tap do |user|
@@ -18,6 +19,11 @@ class User < ActiveRecord::Base
       user.mendeley_username = auth['mendeley_username']
       user.save
     end
+  end
+
+  def import_from_libraries
+    import_articles('zotero', zotero_articles) if zotero?
+    import_articles('mendeley', mendeley_articles) if mendeley?
   end
 
   def zotero?
@@ -50,5 +56,19 @@ class User < ActiveRecord::Base
 
   def mendeley_articles
     mendeley_items.select(&:journal_article?)
+  end
+
+  private
+
+  def import_articles(source, new_articles)
+    new_articles.each do |new_article|
+      next if articles.find_by_title_and_source(new_article.title, source)
+
+      identifiers = new_article.identifier_strings.map { |identifier_string|
+        Identifier.new(body: identifier_string)
+      }
+
+      articles.create({ title: new_article.title, source: source, identifiers: identifiers })
+    end
   end
 end

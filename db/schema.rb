@@ -11,7 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120814153123) do
+ActiveRecord::Schema.define(:version => 20120814210838) do
+
+  create_table "articles", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "title",      :limit => 1024
+    t.string   "url",        :limit => 1024
+    t.string   "source"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  add_index "articles", ["user_id"], :name => "index_articles_on_user_id"
+
+  create_table "identifiers", :force => true do |t|
+    t.integer "article_id"
+    t.string  "body"
+  end
+
+  add_index "identifiers", ["article_id"], :name => "index_identifiers_on_article_id"
 
   create_table "users", :force => true do |t|
     t.integer  "zotero_uid"

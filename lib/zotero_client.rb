@@ -1,6 +1,7 @@
 require 'faraday'
 require 'atom'
 
+# TODO: extract to gem, probably improve the public interface
 module ZoteroClient
   class User
     attr_reader :uid, :key

@@ -25,5 +25,6 @@
     </p>
   <% end %>
 <% else %>
-  <%= link_to "Connect with Zotero", user_omniauth_authorize_path(:zotero) %>
+  <p><%= link_to "Connect with Zotero", user_omniauth_authorize_path(:zotero) %></p>
+  <p><%= link_to "Connect with Mendeley", user_omniauth_authorize_path(:mendeley) %></p>
 <% end %>

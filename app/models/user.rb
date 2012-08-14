@@ -10,6 +10,16 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.find_or_create_for_mendeley_oauth(auth)
+    self.where(auth).first || User.new.tap do |user|
+      user.mendeley_uid = auth['mendeley_uid']
+      user.mendeley_token = auth['mendeley_token']
+      user.mendeley_secret = auth['mendeley_secret']
+      user.mendeley_username = auth['mendeley_username']
+      user.save
+    end
+  end
+
   def zotero?
     !!zotero_uid
   end

@@ -1,4 +1,5 @@
 require 'omniauth-zotero'
+require_relative './mendeley'
 
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
@@ -209,7 +210,12 @@ Devise.setup do |config|
   # up on your models and hooks.
   zotero_key = '40b254ff45835ab31cdf'
   zotero_secret = 'e32947c055c489eda7b4'
-  config.omniauth :zotero, zotero_key, zotero_secret, :scope => 'user,public_repo'
+
+  # TODO: is scope needed?
+  config.omniauth :zotero, zotero_key, zotero_secret, :scope => 'user'
+
+  # TODO: is scope needed?
+  config.omniauth :mendeley, MENDELEY_OAUTH_CONSUMER_KEY, MENDELEY_OAUTH_CONSUMER_SECRET, :scope => 'user'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

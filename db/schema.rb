@@ -11,14 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120806185159) do
+ActiveRecord::Schema.define(:version => 20120814153123) do
 
   create_table "users", :force => true do |t|
     t.integer  "zotero_uid"
     t.string   "zotero_username"
     t.string   "zotero_key"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.integer  "mendeley_uid"
+    t.string   "mendeley_token"
+    t.string   "mendeley_secret"
+    t.string   "mendeley_username"
   end
 
 end

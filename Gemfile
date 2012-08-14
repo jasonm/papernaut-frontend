@@ -34,6 +34,11 @@ end
 
 gem 'jquery-rails'
 
+group :development do
+  gem 'pry'
+  gem 'pry-rails'
+end
+
 group :test do
   gem 'vcr'
   gem 'webmock'

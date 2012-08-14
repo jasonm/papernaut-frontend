@@ -8,6 +8,19 @@ require 'rspec/autorun'
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
+VCR.configure do |c|
+  c.cassette_library_dir = 'spec/fixtures/vcr'
+  c.hook_into :webmock
+  c.ignore_request do |request|
+    host = URI(request.uri).host
+
+    request_is_local = VCR::RequestIgnorer::LOCALHOST_ALIASES.include?(host) 
+    request_is_to_engine = (request.uri == URI(JOURNAL_CLUB_ENGINE_URL))
+
+    request_is_local && !request_is_to_engine
+  end
+end
+
 RSpec.configure do |config|
   # ## Mock Framework
   #

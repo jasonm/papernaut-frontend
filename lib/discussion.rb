@@ -2,6 +2,7 @@ require 'faraday'
 require 'json'
 
 class Discussion
+  # TODO: If the same article comes in via multiple sources, uniq it
   def self.of_articles(articles)
     articles.map { |article|
       self.for(article).map { |discussion|

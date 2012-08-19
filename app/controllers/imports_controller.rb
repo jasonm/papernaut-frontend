@@ -7,6 +7,11 @@ class ImportsController < ApplicationController
       return
     end
 
+    if ! params[:process]
+      render 'preview'
+      return
+    end
+
     articles_before = current_user.articles.count
 
     current_user.import_from_libraries

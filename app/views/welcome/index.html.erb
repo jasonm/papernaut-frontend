@@ -24,18 +24,34 @@
       <%= pluralize @number_of_articles_without_discussions, "more article" %> without discussions.
     </p>
   <% end %>
-<% end %>
 
-<% if !signed_in? || !current_user.zotero? %>
-  <p><%= link_to "Connect with Zotero", user_omniauth_authorize_path(:zotero) %></p>
-<% end %>
+  <% if !current_user.zotero? %>
+    <p><%= link_to "Connect with Zotero", user_omniauth_authorize_path(:zotero) %></p>
+  <% end %>
 
-<% if !signed_in? || !current_user.mendeley? %>
-  <p><%= link_to "Connect with Mendeley", user_omniauth_authorize_path(:mendeley) %></p>
-<% end %>
+  <% if !current_user.mendeley? %>
+    <p><%= link_to "Connect with Mendeley", user_omniauth_authorize_path(:mendeley) %></p>
+  <% end %>
 
-<p><%= link_to "Add articles by uploading a BibTeX file", new_bibtex_import_path %></p>
+  <p><%= link_to "Add articles by uploading a BibTeX file", new_bibtex_import_path %></p>
 
-<% if !signed_in? %>
+<% else %>
+
+  <!--
   <p><%= link_to "Sign up", new_user_registration_path %></p>
+  -->
+
+  <div class="hero-unit">
+    <h1>People are talking</h1>
+    <h2>about the papers you&rsquo;re reading.</h2>
+    <p>Connect to your paper library and join the discussion.</p>
+    <p>We&rsquo;ve got you covered using Zotero, Mendeley, Papers.app, CiteULike, or any software that exports to BibTeX.</p>
+
+    <p>
+      <a class="btn btn-primary btn-large" href="<%= user_omniauth_authorize_path(:zotero) %>">Connect with Zotero</a>
+      <a class="btn btn-primary btn-large" href="<%= user_omniauth_authorize_path(:mendeley) %>">Connect with Mendeley</a>
+      <a class="btn btn-primary btn-large" href="<%= new_bibtex_import_path %>">Upload BibTeX</a>
+    </p>
+
+  </div>
 <% end %>

@@ -33,3 +33,5 @@
 <% if !signed_in? || !current_user.mendeley? %>
   <p><%= link_to "Connect with Mendeley", user_omniauth_authorize_path(:mendeley) %></p>
 <% end %>
+
+<p><%= link_to "Add articles by uploading a BibTeX file", new_bibtex_import_path %></p>

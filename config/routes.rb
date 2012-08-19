@@ -7,6 +7,7 @@ JournalclubFrontend::Application.routes.draw do
   end
 
   resources :imports, only: %w(new)
+  resources :bibtex_imports, only: %w(new create)
 
 
   # The priority is based upon order of creation:

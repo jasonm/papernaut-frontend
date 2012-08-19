@@ -1,0 +1,6 @@
+<%= form_for @bibtex_import, :html => { :class => "well", :multipart => true } do |form| %>
+  <%= form.label :file, 'Choose a BiBTeX file to upload:' %>
+  <%= form.file_field :file  %>
+
+  <button type="submit" class="btn btn-primary">Upload</button>
+<% end %>

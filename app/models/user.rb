@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
 
   has_many :articles
 
+  attr_accessible :email, :password, :password_confirmation
+
   def self.find_or_create_for_zotero_oauth(auth)
     self.where(auth).first || User.new.tap do |user|
       user.set_zotero_auth_fields(auth)

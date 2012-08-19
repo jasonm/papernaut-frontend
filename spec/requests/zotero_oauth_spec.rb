@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "signing in via Zotero OAuth" do
   it "signs the user in", js: true do
-    VCR.use_cassette('zotero-oauth-jayunit') do
+    VCR.use_cassette('zotero-oauth-jayunit', match_requests_on: [:host, :path]) do
       visit '/'
       click_link 'Connect with Zotero'
 

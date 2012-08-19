@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120814210838) do
+ActiveRecord::Schema.define(:version => 20120819194512) do
 
   create_table "articles", :force => true do |t|
     t.integer  "user_id"
@@ -35,12 +35,18 @@ ActiveRecord::Schema.define(:version => 20120814210838) do
     t.integer  "zotero_uid"
     t.string   "zotero_username"
     t.string   "zotero_key"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
     t.integer  "mendeley_uid"
     t.string   "mendeley_token"
     t.string   "mendeley_secret"
     t.string   "mendeley_username"
+    t.string   "email",                :default => "", :null => false
+    t.string   "encrypted_password",   :default => "", :null => false
+    t.datetime "remember_created_at"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
   end
 
 end

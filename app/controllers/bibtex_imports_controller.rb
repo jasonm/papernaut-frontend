@@ -1,8 +1,8 @@
 class BibtexImportsController < ApplicationController
   def new
     unless signed_in?
-      # TODO: redirect to sign up url, or create an anon user and sign them in
-      redirect_to root_url, alert: "Please sign in before importing BibTeX"
+      # TODO: create an anon user and sign them in
+      redirect_to new_user_registration_url, alert: "Please sign up so we can upload your BibTeX library:"
       return
     end
 

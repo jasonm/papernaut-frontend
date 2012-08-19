@@ -1,10 +1,16 @@
 class User < ActiveRecord::Base
-  devise :omniauthable, :authenticatable, :database_authenticatable, :confirmable, :recoverable, :registerable, :rememberable, :validatable,
+  # TODO: re-add validatable
+  devise :omniauthable, :authenticatable, :database_authenticatable, :confirmable, :recoverable, :registerable, :rememberable,
     allow_unconfirmed_access_for: 1.week
 
   has_many :articles
 
   attr_accessible :email, :password, :password_confirmation
+
+  # TODO: default email and password, and also allow setting password from default on 'users/edit'
+  def self.create_guest
+    create
+  end
 
   def self.find_or_create_for_zotero_oauth(auth)
     self.where(auth).first || User.new.tap do |user|

@@ -1,10 +1,6 @@
 class BibtexImportsController < ApplicationController
   def new
-    unless signed_in?
-      # TODO: create an anon user and sign them in
-      redirect_to new_user_registration_url, alert: "Please sign up so we can upload your BibTeX library:"
-      return
-    end
+    sign_in(User.create_guest) unless signed_in?
 
     @bibtex_import = BibtexImport.new
   end

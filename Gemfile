@@ -19,6 +19,7 @@ gem 'rails-footnotes', '>= 3.7.5.rc4', :group => :development
 
 gem 'bootstrap-sass'
 
+gem 'bibtex-ruby'
 
 # Gems used only for assets and not required
 # in production environments by default.

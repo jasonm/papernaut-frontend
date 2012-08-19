@@ -36,4 +36,6 @@
 
 <p><%= link_to "Add articles by uploading a BibTeX file", new_bibtex_import_path %></p>
 
-<p><%= link_to "Sign up", new_user_registration_path %></p>
+<% if !signed_in? %>
+  <p><%= link_to "Sign up", new_user_registration_path %></p>
+<% end %>

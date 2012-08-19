@@ -31,7 +31,7 @@ class Discussion
   end
 
   def title
-    "Discussion on #{hostname}"
+    @attributes["title"]
   end
 
   def url

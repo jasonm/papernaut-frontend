@@ -41,17 +41,25 @@
   <p><%= link_to "Sign up", new_user_registration_path %></p>
   -->
 
-  <div class="hero-unit">
-    <h1>People are talking</h1>
-    <h2>about the papers you&rsquo;re reading.</h2>
-    <p>Connect to your paper library and join the discussion.</p>
-    <p>We&rsquo;ve got you covered using Zotero, Mendeley, Papers.app, CiteULike, or any software that exports to BibTeX.</p>
-
-    <p>
-      <a class="btn btn-primary btn-large" href="<%= user_omniauth_authorize_path(:zotero) %>">Connect with Zotero</a>
-      <a class="btn btn-primary btn-large" href="<%= user_omniauth_authorize_path(:mendeley) %>">Connect with Mendeley</a>
-      <a class="btn btn-primary btn-large" href="<%= new_bibtex_import_path %>">Upload BibTeX</a>
-    </p>
-
+  <div class="homepage-splash">
+    <div class="row">
+      <div class="span8 offset2">
+        <div class="hero-unit">
+          <h1>People are talking about the papers you&rsquo;re reading.</h1>
+          <p class="description">
+            Import your library of papers and we&rsquo;ll show you blog and forum posts that discuss them.
+          </p>
+          <p class="description">
+            Works with Zotero, Mendeley, Papers, CiteULike, or any software that exports to BibTeX.
+          </p>
+          <p>
+            <a class="btn btn-primary btn-large" href="<%= user_omniauth_authorize_path(:zotero) %>">Connect with Zotero</a>
+            <a class="btn btn-primary btn-large" href="<%= user_omniauth_authorize_path(:mendeley) %>">Connect with Mendeley</a>
+            <a class="btn btn-primary btn-large" href="<%= new_bibtex_import_path %>">Upload BibTeX</a>
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
+
 <% end %>

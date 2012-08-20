@@ -1,24 +1,22 @@
 <% if signed_in? %>
-    <div class="page-header">
-      <h2>Library for <%= current_user.mendeley_username || current_user.zotero_username || 'you' %> from <%= source_sentence(current_user) %>:</h2>
-    </div>
+  <div class="page-header">
+    <h2>Library for <%= current_user.mendeley_username || current_user.zotero_username || 'you' %> from <%= source_sentence(current_user) %>:</h2>
+  </div>
 
   <% if @discussions %>
-    <ul class="discussions">
-      <% @discussions.each do |discussion| %>
-        <li>
-          <h3>
-            <%= link_to discussion.title, discussion.url %>
-          </h3>
-          <cite>
-            <%= link_to discussion.url, discussion.url %>
-          </cite>
-          <p>
-            Article: <%= discussion.article.title %>
-          </p>
-        </li>
-      <% end %>
-    </ul>
+    <table class="discussions table table-bordered table-striped">
+      <tbody>
+        <% @discussions.each do |discussion| %>
+          <tr>
+            <td>
+              <h3> <%= link_to discussion.title, discussion.url %> </h3>
+              <cite> <%= link_to discussion.url, discussion.url %> </cite>
+              <p> Article: <%= discussion.article.title %> </p>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
     <p>
       <%= pluralize @number_of_articles_without_discussions, "more article" %> without discussions.

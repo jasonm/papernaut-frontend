@@ -1,13 +1,15 @@
 <div class="row">
-  <div class="span6 offset3">
-      <h2>Yeah</h2>
-      <p>stuff</p>
+  <div class="span8 offset2">
+    <h2>Upload a BibTeX file</h2>
 
-      <%= form_for @bibtex_import, :html => { :class => "well", :multipart => true } do |form| %>
-        <%= form.label :file, 'Choose a BiBTeX file to upload:' %>
-        <%= form.file_field :file  %>
+    <%= form_for @bibtex_import, :html => { :class => "well", :multipart => true } do |form| %>
+      <%= form.label :file, 'Choose a BibTeX file to upload:' %>
+      <%= form.file_field :file  %>
 
-        <button type="submit" class="btn btn-primary">Upload</button>
-      <% end %>
+      <button type="submit" class="btn btn-primary">Upload</button>
+    <% end %>
+
+    <p>BibTeX is a file format that is used to describe lists of references.  Most library management software can export to BibTeX.</p>
+    <p>Does your software not export to BibTeX?  Or does it get imported incorrectly?  I'd love to <%= link_to "hear from you", page_path('about') %>!</p>
   </div>
 </div>

@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
-  # TODO: re-add validatable, confirmable
-  devise :omniauthable, :authenticatable, :database_authenticatable, :recoverable, :registerable, :rememberable,
-    allow_unconfirmed_access_for: 1.week
+  # TODO: re-add validatable, confirmable, allow_unconfirmed_access_for: 1.week
+  devise :omniauthable, :authenticatable, :database_authenticatable, :recoverable, :registerable, :rememberable
 
   has_many :articles
 

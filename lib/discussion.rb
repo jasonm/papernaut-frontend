@@ -21,14 +21,10 @@ class Discussion
   end
 
   def self.for_identifier(identifier_string)
-    begin
-      url = "#{JOURNAL_CLUB_ENGINE_URL}/discussions.json?query=#{CGI.escape(identifier_string)}"
-      response = get_http(url)
-      discussion_hashes = JSON.parse(response.body)
-      discussion_hashes.map { |hash| self.new(hash) }
-    rescue Exception => e
-      raise "Could not load engine url #{url}"
-    end
+    url = "#{JOURNAL_CLUB_ENGINE_URL}/discussions.json?query=#{CGI.escape(identifier_string)}"
+    response = get_http(url)
+    discussion_hashes = JSON.parse(response.body)
+    discussion_hashes.map { |hash| self.new(hash) }
   end
 
   attr_accessor :article

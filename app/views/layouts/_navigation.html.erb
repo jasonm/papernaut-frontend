@@ -4,6 +4,9 @@
   <li>
     <%= link_to "About", page_path('about') %>
   </li>
+  <li>
+    <%= link_to "Stats", page_path('stats') %>
+  </li>
   <% if user_signed_in? %>
     <li>
       <%= link_to "Logout", sign_out_url, method: 'delete' %>

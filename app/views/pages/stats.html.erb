@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="span8 offset2">
+    <h2>Match engine statistics:</h2>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Stat</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% EngineStats.stats.each do |key, value| %>
+          <tr>
+            <td><%= key.humanize %></td>
+            <td><%= number_with_delimiter(value) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

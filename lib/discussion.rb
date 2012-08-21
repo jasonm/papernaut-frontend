@@ -34,7 +34,11 @@ class Discussion
   end
 
   def title
-    @attributes["title"]
+    if @attributes["title"] == @attributes["url"]
+      guess_readable_title_from_url
+    else
+      @attributes["title"]
+    end
   end
 
   def url
@@ -46,6 +50,11 @@ class Discussion
   end
 
   private
+
+  def guess_readable_title_from_url
+    article_part = Addressable::URI.parse(url).path.split('/').last
+    pagename = article_part.underscore.humanize
+  end
 
   def hostname
     Addressable::URI.parse(url).host

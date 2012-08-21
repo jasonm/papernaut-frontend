@@ -1,5 +1,5 @@
 <% if signed_in? %>
-    <h2>Library for <%= current_user.mendeley_username || current_user.zotero_username || 'you' %> from <%= source_sentence(current_user) %>:</h2>
+  <h2>Matches for <%= current_user.mendeley_username || current_user.zotero_username || 'you' %> from <%= source_sentence(current_user) %>:</h2>
 
   <% if @discussions %>
     <table class="discussions table table-bordered table-striped">

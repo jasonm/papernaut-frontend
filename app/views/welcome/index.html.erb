@@ -1,7 +1,5 @@
 <% if signed_in? %>
-  <div class="page-header">
     <h2>Library for <%= current_user.mendeley_username || current_user.zotero_username || 'you' %> from <%= source_sentence(current_user) %>:</h2>
-  </div>
 
   <% if @discussions %>
     <table class="discussions table table-bordered table-striped">
@@ -23,15 +21,18 @@
     </p>
   <% end %>
 
-  <% if !current_user.zotero? %>
-    <p><%= link_to "Connect with Zotero", user_omniauth_authorize_path(:zotero) %></p>
-  <% end %>
+  <div class="well">
+    <h3>Add more papers from your library</h3>
+    <% if !current_user.zotero? %>
+      <%= link_to "Connect with Zotero", user_omniauth_authorize_path(:zotero), :class => "btn" %>
+    <% end %>
 
-  <% if !current_user.mendeley? %>
-    <p><%= link_to "Connect with Mendeley", user_omniauth_authorize_path(:mendeley) %></p>
-  <% end %>
+    <% if !current_user.mendeley? %>
+      <%= link_to "Connect with Mendeley", user_omniauth_authorize_path(:mendeley), :class => "btn" %>
+    <% end %>
 
-  <p><%= link_to "Add articles by uploading a BibTeX file", new_bibtex_import_path %></p>
+    <%= link_to "Add articles by uploading a BibTeX file", new_bibtex_import_path, :class => "btn" %>
+  </div>
 
 <% else %>
 

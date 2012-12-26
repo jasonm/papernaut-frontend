@@ -51,10 +51,6 @@ class User < ActiveRecord::Base
     ZoteroClient::User.new(zotero_uid, zotero_key)
   end
 
-  def zotero_items
-    zotero_user.items
-  end
-
   def zotero_articles
     zotero_user.items.select(&:journal_article?)
   end
@@ -67,12 +63,8 @@ class User < ActiveRecord::Base
     MendeleyClient::User.new(mendeley_uid, mendeley_token, mendeley_secret)
   end
 
-  def mendeley_items
-    mendeley_user.items
-  end
-
   def mendeley_articles
-    mendeley_items.select(&:journal_article?)
+    mendeley_user.items.select(&:journal_article?)
   end
 
   private

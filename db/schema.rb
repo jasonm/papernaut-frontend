@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120819203412) do
+ActiveRecord::Schema.define(:version => 20120822084700) do
 
   create_table "articles", :force => true do |t|
     t.integer  "user_id"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(:version => 20120819203412) do
 
   create_table "identifiers", :force => true do |t|
     t.integer "article_id"
-    t.string  "body"
+    t.string  "body",       :limit => 2048
   end
 
   add_index "identifiers", ["article_id"], :name => "index_identifiers_on_article_id"

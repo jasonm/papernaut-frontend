@@ -23,9 +23,9 @@ class BibtexImport
 
   def new_articles
     valid_bibliography_entries.map do |entry|
-      article = Article.new(entry.article_attributes)
-      article.user = user
-      article
+      Article.new(entry.article_attributes).tap do |article|
+        article.user = user
+      end
     end
   end
 

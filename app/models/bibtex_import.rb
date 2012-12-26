@@ -22,17 +22,11 @@ class BibtexImport
   end
 
   def new_articles
-    bibliography.data.map do |data|
-      next if ! data.is_a? BibTeX::Entry
-
-      entry = BibtexImport::Entry.new(data)
-      next if !entry.valid?
-
-      attributes = entry.article_attributes
-      article = Article.new(attributes)
+    valid_bibliography_entries.map do |entry|
+      article = Article.new(entry.article_attributes)
       article.user = user
       article
-    end.compact
+    end
   end
 
   def save
@@ -44,6 +38,17 @@ class BibtexImport
   end
 
   private
+
+  def valid_bibliography_entries
+    bibliography.data.map do |data|
+      next if ! data.is_a? BibTeX::Entry
+
+      entry = BibtexImport::Entry.new(data)
+      next if !entry.valid?
+
+      entry
+    end.compact
+  end
 
   def bibliography
     BibTeX::Bibliography.parse(bibtex_source)

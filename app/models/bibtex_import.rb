@@ -23,11 +23,16 @@ class BibtexImport
 
   def new_articles
     bibliography.data.map do |data|
-      attributes = BibtexImport::Entry.new(data).article_attributes
+      next if ! data.is_a? BibTeX::Entry
+
+      entry = BibtexImport::Entry.new(data)
+      next if !entry.valid?
+
+      attributes = entry.article_attributes
       article = Article.new(attributes)
       article.user = user
       article
-    end
+    end.compact
   end
 
   def save
@@ -51,10 +56,14 @@ class BibtexImport
 
     def article_attributes
       {
-        title: @data.title.to_s,
+        title: @data['title'].to_s,
         source: "bibtex",
         identifiers: new_identifiers
       }
+    end
+
+    def valid?
+      article_attributes[:title].present? && article_attributes[:identifiers].any?
     end
 
     private

@@ -63,6 +63,7 @@ class BibtexImport
     def article_attributes
       {
         title: @data['title'].to_s,
+        author: @data['author'].to_s,
         source: "bibtex",
         identifiers: identifiers
       }

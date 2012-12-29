@@ -61,6 +61,10 @@ describe BibtexImport::Entry do
     invalid_entry = BibtexImport::Entry.new({ 'title' => "title" })
     invalid_entry.valid?.should be_false
   end
+
+  it "imports the author" do
+    BibtexImport::Entry.new({ 'author' => "Jane Smith" }).article_attributes[:author].should == 'Jane Smith'
+  end
 end
 
 describe BibtexImport::Entry, "with DOI verification" do

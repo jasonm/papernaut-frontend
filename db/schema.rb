@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120822084700) do
+ActiveRecord::Schema.define(:version => 20121229030416) do
 
   create_table "articles", :force => true do |t|
     t.integer  "user_id"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20120822084700) do
     t.string   "source"
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
+    t.string   "author",     :limit => 1024
   end
 
   add_index "articles", ["user_id"], :name => "index_articles_on_user_id"

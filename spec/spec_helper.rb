@@ -49,4 +49,8 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  config.before do
+    Capybara.server_port = 64177 # used in VCR fixture to pass Zotero an OAuth callback_uri
+  end
 end

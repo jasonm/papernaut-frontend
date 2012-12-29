@@ -55,15 +55,16 @@ class BibtexImport
   end
 
   class Entry
-    def initialize(data)
+    def initialize(data, doi_class = Doi)
       @data = data
+      @doi_class = doi_class
     end
 
     def article_attributes
       {
         title: @data['title'].to_s,
         source: "bibtex",
-        identifiers: new_identifiers
+        identifiers: identifiers
       }
     end
 
@@ -71,11 +72,11 @@ class BibtexImport
       article_attributes[:title].present? && article_attributes[:identifiers].any?
     end
 
-    private
-
-    def new_identifiers
+    def identifiers
       identifier_bodies.map { |body| Identifier.new(body: body) }
     end
+
+    private
 
     def identifier_bodies
       identifier_pairs.to_a.map do |key, value|
@@ -85,12 +86,21 @@ class BibtexImport
 
     def identifier_pairs
       {
+        doi: parse_and_validate_doi,
         url: @data['url'],
         issn: @data['issn'],
         isbn: @data['isbn'],
         pmid: @data['pmid'] || parse_zotero_pmid,
         pmcid: @data['pmcid'] || parse_zotero_pmcid
       }
+    end
+
+    def parse_and_validate_doi
+      doi = @data['doi']
+
+      if doi && @doi_class.new(doi).exists?
+        doi
+      end
     end
 
     def parse_zotero_pmid

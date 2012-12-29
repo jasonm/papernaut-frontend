@@ -97,10 +97,18 @@ class BibtexImport
     end
 
     def parse_and_validate_doi
-      doi = @data['doi']
+      doi = @data['doi'] || doi_by_url_from(note)
 
       if doi && @doi_class.new(doi).exists?
         doi
+      end
+    end
+
+    def doi_by_url_from(string)
+      uris = URI.extract(string, %w(http https)).map { |uri| URI.parse(uri) }
+
+      if doi_uri = uris.detect { |uri| uri.host == 'dx.doi.org' }
+        doi_uri.path.sub('/', '')
       end
     end
 

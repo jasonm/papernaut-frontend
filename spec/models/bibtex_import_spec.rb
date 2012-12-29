@@ -1,5 +1,15 @@
 require 'spec_helper'
 
+module BibtexAssertions
+  def attributes_should_yield_identifiers(attributes, identifier_bodies)
+    BibtexImport::Entry.new(attributes).identifiers.map(&:body).should == identifier_bodies
+  end
+end
+
+RSpec.configure do |config|
+  config.include BibtexAssertions
+end
+
 describe BibtexImport do
   before do
     Doi.any_instance.stub(:exists?).and_return(true)
@@ -62,4 +72,15 @@ describe BibtexImport::Entry, "when DOI verification fails" do
   end
 end
 
+describe BibtexImport::Entry, "importing PMIDs" do
+  it 'finds PMID in note, annote fields' do
+    attributes_should_yield_identifiers({ 'note' => 'this is PMID: 1234' }, ['PMID:1234'])
+    attributes_should_yield_identifiers({ 'annote' => 'this is PMID: 1234' }, ['PMID:1234'])
+  end
+
+  it 'finds PMCID in note, annote fields' do
+    attributes_should_yield_identifiers({ 'note' => 'this is PMCID: PMC5678' }, ['PMCID:PMC5678'])
+    attributes_should_yield_identifiers({ 'annote' => 'this is PMCID: PMC5678' }, ['PMCID:PMC5678'])
+  end
+end
 

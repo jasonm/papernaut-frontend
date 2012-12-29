@@ -91,8 +91,8 @@ class BibtexImport
         url: @data['url'],
         issn: @data['issn'],
         isbn: @data['isbn'],
-        pmid: @data['pmid'] || parse_pmid,
-        pmcid: @data['pmcid'] || parse_pmcid
+        pmid: parse_pmid,
+        pmcid: parse_pmcid
       }
     end
 
@@ -113,11 +113,11 @@ class BibtexImport
     end
 
     def parse_pmid
-      $1 if (note + annote) =~ /PMID: (\d+)/
+      @data['pmid'] || $1 if (note + annote) =~ /PMID: (\d+)/
     end
 
     def parse_pmcid
-      $1 if (note + annote) =~ /PMCID: (PMC\d+)/
+      @data['pmcid'] || $1 if (note + annote) =~ /PMCID: (PMC\d+)/
     end
 
     def note

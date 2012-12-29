@@ -45,6 +45,19 @@ describe BibtexImport do
     article = BibtexImport.new(bibtex_source: bib).new_articles.first
     article.identifiers.map(&:body).should == ["PMID:16738572"]
   end
+
+  it 'strips latex-encoded html tags' do
+    bib = <<-BIB
+      @article{andrianantoandro_synthetic_2006,
+        PMID = {16738572},
+        Author = {\\textlesssup\\textgreatersuper person\\textless/sup\\textgreater},
+        Title = {\\textlessi\\textgreater"Deinococcus radiodurans"\\textless/i\\textgreater - a model organism for life under Martian conditions}}
+    BIB
+
+    article = BibtexImport.new(bibtex_source: bib).new_articles.first
+    article.title.should == '"Deinococcus radiodurans" - a model organism for life under Martian conditions'
+    article.author.should == 'super person'
+  end
 end
 
 describe BibtexImport::Entry do

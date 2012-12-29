@@ -62,8 +62,8 @@ class BibtexImport
 
     def article_attributes
       {
-        title: @data['title'].to_s,
-        author: @data['author'].to_s,
+        title: strip_latex_html_tags(@data['title'].to_s),
+        author: strip_latex_html_tags(@data['author'].to_s),
         source: "bibtex",
         identifiers: identifiers
       }
@@ -128,6 +128,8 @@ class BibtexImport
       @data['annote'].to_s
     end
 
+    def strip_latex_html_tags(string)
+      string.gsub(/\\textless\/?\w+\\textgreater/, '')
     end
   end
 end

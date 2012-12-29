@@ -51,7 +51,7 @@ class BibtexImport
   end
 
   def bibliography
-    BibTeX::Bibliography.parse(bibtex_source)
+    BibTeX::Bibliography.parse(bibtex_source).convert(:latex)
   end
 
   class Entry

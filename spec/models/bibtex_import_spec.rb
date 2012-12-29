@@ -33,6 +33,17 @@ describe BibtexImport do
     import = BibtexImport.new(file: error_file)
     import.new_articles.count.should == 0
   end
+
+  it 'finds variously latex-tagged objects' do
+    bib = <<-BIB
+      @article{andrianantoandro_synthetic_2006,
+        Title = {yadda},
+        Note = {{PMID:} 16738572}}
+    BIB
+
+    article = BibtexImport.new(bibtex_source: bib).new_articles.first
+    article.identifiers.map(&:body).should == ["PMID:16738572"]
+  end
 end
 
 describe BibtexImport::Entry do

@@ -29,6 +29,7 @@ describe BibtexImport do
     ]
   end
 
+  # TODO: clarify this spec as to what particular errors it handles, and avoid mystery guest antipattern
   it 'handles errors' do
     error_file = File.open(Rails.root.join('spec/fixtures/bibdesk-error.bib'))
     import = BibtexImport.new(file: error_file)

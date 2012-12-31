@@ -53,4 +53,6 @@ RSpec.configure do |config|
   config.before do
     Capybara.server_port = 64177 # used in VCR fixture to pass Zotero an OAuth callback_uri
   end
+
+  config.include FactoryGirl::Syntax::Methods
 end

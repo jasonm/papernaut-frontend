@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121229030416) do
+ActiveRecord::Schema.define(:version => 20121229161415) do
 
   create_table "articles", :force => true do |t|
     t.integer  "user_id"
@@ -31,6 +31,11 @@ ActiveRecord::Schema.define(:version => 20121229030416) do
   end
 
   add_index "identifiers", ["article_id"], :name => "index_identifiers_on_article_id"
+
+  create_table "imports", :force => true do |t|
+    t.integer "user_id"
+    t.string  "state"
+  end
 
   create_table "users", :force => true do |t|
     t.integer  "zotero_uid"

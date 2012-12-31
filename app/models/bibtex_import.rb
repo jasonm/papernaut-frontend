@@ -80,7 +80,7 @@ class BibtexImport
     private
 
     def identifier_bodies
-      identifier_pairs.to_a.map do |key, value|
+      identifier_pairs.map do |key, value|
         "#{key.upcase}:#{value}" if value.present?
       end.compact
     end
@@ -113,11 +113,19 @@ class BibtexImport
     end
 
     def parse_pmid
-      @data['pmid'] || $1 if (note + annote) =~ /PMID: (\d+)/
+      if @data['pmid']
+        @data['pmid'].to_s
+      elsif (note + annote) =~ /PMID: (\d+)/
+        $1
+      end
     end
 
     def parse_pmcid
-      @data['pmcid'] || $1 if (note + annote) =~ /PMCID: (PMC\d+)/
+      if @data['pmcid']
+        @data['pmcid'].to_s
+      elsif (note + annote) =~ /PMCID: (PMC\d+)/
+        $1
+      end
     end
 
     def note

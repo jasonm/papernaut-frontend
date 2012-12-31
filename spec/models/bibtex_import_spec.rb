@@ -110,14 +110,16 @@ describe BibtexImport::Entry, "when DOI verification fails" do
 end
 
 describe BibtexImport::Entry, "importing PMIDs" do
-  it 'finds PMID in note, annote fields' do
+  it 'finds PMID in note, annote, pmid fields' do
     attributes_should_yield_identifiers({ 'note' => 'this is PMID: 1234' }, ['PMID:1234'])
     attributes_should_yield_identifiers({ 'annote' => 'this is PMID: 1234' }, ['PMID:1234'])
+    attributes_should_yield_identifiers({ 'pmid' => '1234' }, ['PMID:1234'])
   end
 
-  it 'finds PMCID in note, annote fields' do
+  it 'finds PMCID in note, annote, pmcid fields' do
     attributes_should_yield_identifiers({ 'note' => 'this is PMCID: PMC5678' }, ['PMCID:PMC5678'])
     attributes_should_yield_identifiers({ 'annote' => 'this is PMCID: PMC5678' }, ['PMCID:PMC5678'])
+    attributes_should_yield_identifiers({ 'pmcid' => 'PMC1234' }, ['PMCID:PMC1234'])
   end
 end
 

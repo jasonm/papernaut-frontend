@@ -54,7 +54,10 @@ describe BibtexImport do
         Title = {\\textlessi\\textgreater"Deinococcus radiodurans"\\textless/i\\textgreater - a model organism for life under Martian conditions}}
     BIB
 
-    article = BibtexImport.new(bibtex_source: bib).new_articles.first
+    bibtex_import = BibtexImport.new(bibtex_source: bib)
+    bibtex_import.new_articles.size.should == 1
+
+    article = bibtex_import.new_articles.first
     article.title.should == '"Deinococcus radiodurans" - a model organism for life under Martian conditions'
     article.author.should == 'super person'
   end

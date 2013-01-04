@@ -8,6 +8,7 @@ div.homepage-splash {
     font-weight: 700;
     color: #444;
     margin-bottom: 30px;
+    font-family: 'Merriweather', Georgia, serif;
   }
 
   div.hero-unit {
@@ -53,7 +54,7 @@ div.homepage-splash {
 
     h1 {
       top: -35px;
-      margin-left: 280px;
+      margin-left: 270px;
       font-size: 60px;
     }
   }
@@ -79,6 +80,6 @@ div.homepage-splash {
 
 @media (max-width: 480px) { /* phone override */
   div.homepage-splash h1 {
-    font-size: 36px;
+    font-size: 32px;
   }
 }

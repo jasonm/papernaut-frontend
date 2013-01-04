@@ -1,0 +1,31 @@
+div.matches {
+  h2 {
+    margin-bottom: 24px;
+  }
+
+  div.discussions {
+    div.favicon {
+      position: relative;
+      left: -24px;
+      top: 16px;
+
+      height: 16px;
+      width: 16px;
+
+      background-size: 16px 16px;
+      background-repeat: no-repeat;
+    }
+
+    p.discussion-title {
+      font-weight: 700;
+    }
+
+    p.discussion-link a {
+      color: #999;
+    }
+
+    span.meta {
+      color: #999;
+    }
+  }
+}

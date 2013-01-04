@@ -7,6 +7,8 @@ class WelcomeController < ApplicationController
       rescue Discussion::EngineUnreachableException => e
         flash.now[:alert] = "Discussion matching is temporarily unavailable."
       end
+    else
+      @suppress_navigation = true
     end
   end
 end

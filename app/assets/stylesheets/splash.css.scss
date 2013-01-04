@@ -1,23 +1,13 @@
 div.homepage-splash {
-  margin-top: 150px;
-
   img {
     position: absolute;
-    margin-top: -350px;
-    margin-left: -60px;
-    width: 332px;
-    height: 332px;
   }
 
   h1 {
-
     position: relative;
-    top: -50px;
-    margin-left: 360px;
-    font-size: 72px;
-    margin-bottom: 30px;
     font-weight: 700;
     color: #444;
+    margin-bottom: 30px;
   }
 
   div.hero-unit {
@@ -26,6 +16,69 @@ div.homepage-splash {
   }
 
   p.description {
-    margin-bottom: 30px;
+  }
+
+  p.calls-to-action a {
+    margin-top: 30px;
+  }
+}
+
+@media (min-width: 1200px) { /* desktop wide */
+  div.homepage-splash {
+    margin-top: 150px;
+    img {
+      margin-top: -350px;
+      margin-left: -60px;
+      width: 332px;
+      height: 332px;
+    }
+
+    h1 {
+      top: -50px;
+      margin-left: 360px;
+      font-size: 72px;
+    }
+  }
+}
+
+@media (min-width: 980px) and (max-width: 1199px) { /* tablet-landscape to desktop */
+  div.homepage-splash {
+    margin-top: 75px;
+    img {
+      margin-top: -295px;
+      margin-left: -60px;
+      width: 249px;
+      height: 249px;
+    }
+
+    h1 {
+      top: -35px;
+      margin-left: 280px;
+      font-size: 60px;
+    }
+  }
+}
+
+@media (max-width: 979px) { /* phone AND tablet-portrait */
+  div.homepage-splash {
+    margin-top: 75px;
+    img {
+      margin-top: -230px;
+      margin-left: -60px;
+      width: 166px;
+      height: 166px;
+    }
+
+    h1 {
+      top: -8px;
+      margin-left: 180px;
+      font-size: 48px;
+    }
+  }
+}
+
+@media (max-width: 480px) { /* phone override */
+  div.homepage-splash h1 {
+    font-size: 36px;
   }
 }

@@ -44,7 +44,10 @@ group :development do
   gem 'pry'
   gem 'pry-rails'
   gem 'guard-livereload'
-  gem 'rb-fsevent', '~> 0.9.1', :require => false if RUBY_PLATFORM =~ /darwin/i
+end
+
+group :development, :darwin do
+  gem 'rb-fsevent', '~> 0.9.1'
 end
 
 group :test do

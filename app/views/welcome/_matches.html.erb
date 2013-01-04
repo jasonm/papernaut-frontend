@@ -1,0 +1,34 @@
+<h2>Matches for <%= current_user.mendeley_username || current_user.zotero_username || 'you' %> from <%= source_sentence(current_user) %>:</h2>
+
+<% if @discussions %>
+  <table class="discussions table table-bordered table-striped">
+    <tbody>
+      <% @discussions.each do |discussion| %>
+        <tr>
+          <td>
+            <h3> <%= link_to discussion.title, discussion.url %> </h3>
+            <cite> <%= link_to discussion.url, discussion.url %> </cite>
+            <p> Article: <%= discussion.article.title %> </p>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <p>
+    <%= pluralize @number_of_articles_without_discussions, "more article" %> without discussions.
+  </p>
+<% end %>
+
+<div class="well">
+  <h3>Add more papers from your library</h3>
+  <% if !current_user.zotero? %>
+    <%= link_to "Connect with Zotero", user_omniauth_authorize_path(:zotero), :class => "btn" %>
+  <% end %>
+
+  <% if !current_user.mendeley? %>
+    <%= link_to "Connect with Mendeley", user_omniauth_authorize_path(:mendeley), :class => "btn" %>
+  <% end %>
+
+  <%= link_to "Add articles by uploading a BibTeX file", new_bibtex_import_path, :class => "btn" %>
+</div>

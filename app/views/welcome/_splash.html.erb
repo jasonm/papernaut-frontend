@@ -1,0 +1,23 @@
+<!--
+<p><%= link_to "Sign up", new_user_registration_path %></p>
+-->
+
+<div class="homepage-splash">
+  <div class="row">
+    <div class="span8 offset2">
+      <h1>Papernaut</h1>
+      <div class="hero-unit">
+        <%= image_tag('astronaut.png') %>
+        <p class="description">
+          People are talking about the papers you&rsquo;re reading.
+          Connect your reference manager to find blogs, forums, and mainstream media coverage of papers in your library.
+        </p>
+        <p>
+          <a class="btn btn-primary btn-large" href="<%= user_omniauth_authorize_path(:zotero) %>">Connect with Zotero</a>
+          <a class="btn btn-primary btn-large" href="<%= user_omniauth_authorize_path(:mendeley) %>">Connect with Mendeley</a>
+          <a class="btn btn-primary btn-large" href="<%= new_bibtex_import_path %>">Upload BibTeX</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

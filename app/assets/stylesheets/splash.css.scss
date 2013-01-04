@@ -1,0 +1,31 @@
+div.homepage-splash {
+  margin-top: 150px;
+
+  img {
+    position: absolute;
+    margin-top: -350px;
+    margin-left: -60px;
+    width: 332px;
+    height: 332px;
+  }
+
+  h1 {
+
+    position: relative;
+    top: -50px;
+    margin-left: 360px;
+    font-size: 72px;
+    margin-bottom: 30px;
+    font-weight: 700;
+    color: #444;
+  }
+
+  div.hero-unit {
+    position: relative;
+    padding-top: 100px;
+  }
+
+  p.description {
+    margin-bottom: 30px;
+  }
+}

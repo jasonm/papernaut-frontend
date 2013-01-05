@@ -5,7 +5,7 @@
     <div class="discussions">
       <% @discussions.each do |discussion| %>
         <div class="discussion">
-          <div class="favicon" style="background-image: url('http://<%= discussion.send(:hostname) %>/favicon.ico');"> </div>
+          <div class="favicon hidden-phone" style="background-image: url('http://<%= discussion.send(:hostname) %>/favicon.ico');"> </div>
           <p class="discussion-title">
             <%= link_to discussion.title, discussion.url %>
           </p>
@@ -20,8 +20,8 @@
     </p>
   <% end %>
 
-  <div class="well">
-    <h3>Add more papers from your library</h3>
+  <div class="add-more-papers well">
+    <h3>Add more papers from another library:</h3>
     <% if !current_user.zotero? %>
       <%= link_to "Connect with Zotero", user_omniauth_authorize_path(:zotero), :class => "btn" %>
     <% end %>

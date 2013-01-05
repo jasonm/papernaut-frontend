@@ -1,21 +1,27 @@
 <div class="row">
-  <div class="span8 offset2">
-    <h2>Match engine statistics:</h2>
-    <table class="table table-bordered table-striped">
-      <thead>
-        <tr>
-          <th>Stat</th>
-          <th>Value</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% EngineStats.stats.each do |key, value| %>
+  <div class="span12 offset0">
+    <h2>Statistics for the matching engine</h2>
+    <%# TODO: extract to its own controller and clean this up %>
+    <% begin %>
+      <% @stats = EngineStats.stats %>
+      <table class="table table-bordered table-striped">
+        <thead>
           <tr>
-            <td><%= key.humanize %></td>
-            <td><%= number_with_delimiter(value) %></td>
+            <th>Stat</th>
+            <th>Value</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @stats.each do |key, value| %>
+            <tr>
+              <td><%= key.humanize %></td>
+              <td><%= number_with_delimiter(value) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% rescue Faraday::Error::ConnectionFailed %>
+      <p class="text-error">The matching engine is not reachable at the moment.</p>
+    <% end %>
   </div>
 </div>

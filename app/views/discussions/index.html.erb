@@ -1,22 +1,26 @@
-<div class="matches">
+<div class="discussions">
   <h2>Matches for <%= current_user.mendeley_username || current_user.zotero_username || 'you' %> from <%= source_sentence(current_user) %>:</h2>
 
   <% if @discussions %>
-    <div class="discussions">
-      <% @discussions.each do |discussion| %>
-        <div class="discussion">
-          <div class="favicon hidden-phone" style="background-image: url('http://<%= discussion.send(:hostname) %>/favicon.ico');"> </div>
-          <p class="discussion-title">
-            <%= link_to discussion.title, discussion.url %>
-          </p>
-          <p class="discussion-link"><%= link_to discussion.send(:hostname), discussion.url %></p>
-          <p class="paper-title"><span class="meta">Paper</span>: <%= discussion.article.title %></p>
+    <% @discussions.each do |discussion| %>
+      <div class="discussion">
+        <%# TODO: Make this less hacky %>
+        <div class="favicon hidden-phone" style="background-image: url('http://<%= discussion.send(:hostname) %>/favicon.ico');">
         </div>
-      <% end %>
-    </div>
+        <p class="discussion-title">
+          <%= link_to discussion.title, discussion.url %>
+        </p>
+        <p class="discussion-link"><%= link_to discussion.send(:hostname), discussion.url %></p>
+        <p class="paper-title"><span class="meta">Paper</span>: <%= discussion.article.title %></p>
+      </div>
+    <% end %>
 
     <p>
       <%= pluralize @number_of_articles_without_discussions, "more article" %> without discussions.
+    </p>
+  <% else %>
+    <p class="text-warning">Sorry, we couldn't find any discussions for your
+      <%= pluralize @number_of_articles_without_discussions, "articles" %>.
     </p>
   <% end %>
 

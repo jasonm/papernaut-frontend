@@ -1,5 +1,21 @@
-<% if signed_in? %>
-  <%= render :partial => 'matches' %>
-<% else %>
-  <%= render :partial => 'splash' %>
-<% end %>
+<div class="homepage-splash">
+  <div class="row">
+    <div class="span8 offset2">
+      <h1>Papernaut</h1>
+      <div class="hero-unit">
+        <div class="astronaut">
+          <%= image_tag('astronaut.png') %>
+        </div>
+        <p class="description">
+          People are talking about the papers you&rsquo;re reading.
+          Connect your reference manager to find blog, forum, and mainstream media coverage of papers in your library.
+        </p>
+        <p class="calls-to-action">
+          <a class="btn btn-primary btn-large" href="<%= user_omniauth_authorize_path(:zotero) %>">Connect with Zotero</a>
+          <a class="btn btn-primary btn-large" href="<%= user_omniauth_authorize_path(:mendeley) %>">Connect with Mendeley</a>
+          <a class="btn btn-primary btn-large" href="<%= new_bibtex_import_path %>">Upload BibTeX</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

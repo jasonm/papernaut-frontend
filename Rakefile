@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-JournalclubFrontend::Application.load_tasks
+PapernautFrontend::Application.load_tasks

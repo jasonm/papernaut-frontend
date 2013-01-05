@@ -1,6 +1,6 @@
 # Be sure to restart your server when you modify this file.
 
-JournalclubFrontend::Application.config.session_store :cookie_store, key: '_journalclub_frontend_session'
+PapernautFrontend::Application.config.session_store :cookie_store, key: '_papernaut_frontend_session'
 
 # Use the database for sessions instead of the cookie-based default,
 # which shouldn't be used to store highly confidential information

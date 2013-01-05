@@ -21,12 +21,13 @@ div.homepage-splash {
 
   p.calls-to-action a {
     margin-top: 30px;
+    font-size: 16px;
   }
 }
 
 @media (min-width: 1200px) { /* desktop wide */
   div.homepage-splash {
-    margin-top: 150px;
+    margin-top: 128px;
     img {
       margin-top: -350px;
       margin-left: -60px;
@@ -44,7 +45,7 @@ div.homepage-splash {
 
 @media (min-width: 980px) and (max-width: 1199px) { /* tablet-landscape to desktop */
   div.homepage-splash {
-    margin-top: 75px;
+    margin-top: 64px;
     img {
       margin-top: -295px;
       margin-left: -60px;
@@ -60,9 +61,10 @@ div.homepage-splash {
   }
 }
 
-@media (max-width: 979px) { /* phone AND tablet-portrait */
+
+@media (min-width: 481px) and (max-width: 979px) { /* phone AND tablet-portrait */
   div.homepage-splash {
-    margin-top: 75px;
+    margin-top: 64px;
     img {
       margin-top: -230px;
       margin-left: -60px;
@@ -78,8 +80,34 @@ div.homepage-splash {
   }
 }
 
-@media (max-width: 480px) { /* phone override */
-  div.homepage-splash h1 {
-    font-size: 32px;
+@media (max-width: 480px) { /* phone AND tablet-portrait */
+  $astronaut-overhang: 160px;
+  $astronaut-size: 166px;
+
+  div.homepage-splash {
+    div.astronaut {
+      width: $astronaut-size;
+      margin: 0 auto;
+    }
+
+    img {
+      position: relative;
+      width: $astronaut-size;
+      height: $astronaut-size;
+      top: -$astronaut-overhang;
+      margin-bottom: -$astronaut-overhang;
+    }
+
+    h1 {
+      margin-bottom: 18px;
+      font-size: 48px;
+      text-align: center;
+    }
+
+    div.hero-unit {
+      position: relative;
+      padding: 18px;
+      margin-top: $astronaut-overhang;
+    }
   }
 }

@@ -10,6 +10,6 @@ class BibtexImportsController < ApplicationController
     bibtex_import.user = current_user
     bibtex_import.save
 
-    redirect_to root_url, notice: "Imported #{bibtex_import.new_articles.count} articles from #{bibtex_import.filename}."
+    redirect_to root_url, notice: "Imported #{bibtex_import.new_articles.count} papers from #{bibtex_import.filename}."
   end
 end

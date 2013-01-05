@@ -18,7 +18,7 @@ class ImportsController < ApplicationController
 
     articles_after = current_user.articles.count
     new_articles = articles_after - articles_before
-    message = "#{pluralize(new_articles, "new article")} imported from your libraries."
+    message = "#{pluralize(new_articles, "new paper")} imported."
 
     redirect_to root_url, notice: message
   end

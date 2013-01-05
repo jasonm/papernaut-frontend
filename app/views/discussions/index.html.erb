@@ -16,11 +16,11 @@
     <% end %>
 
     <p>
-      <%= pluralize @number_of_articles_without_discussions, "more article" %> without discussions.
+      <%= pluralize @number_of_articles_without_discussions, "more paper" %> without discussions.
     </p>
   <% else %>
     <p class="text-warning">Sorry, we couldn't find any discussions for your
-      <%= pluralize @number_of_articles_without_discussions, "articles" %>.
+      <%= pluralize @number_of_articles_without_discussions, "paper" %>.
     </p>
   <% end %>
 
@@ -34,6 +34,6 @@
       <%= link_to "Connect with Mendeley", user_omniauth_authorize_path(:mendeley), :class => "btn" %>
     <% end %>
 
-    <%= link_to "Add articles by uploading a BibTeX file", new_bibtex_import_path, :class => "btn" %>
+    <%= link_to "Add papers by uploading a BibTeX file", new_bibtex_import_path, :class => "btn" %>
   </div>
 </div>

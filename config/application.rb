@@ -59,7 +59,11 @@ module JournalclubFrontend
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-    # Devise install instructions mention this for Heroku prod.
-    # config.assets.initialize_on_precompile = false
+    # This option is new in Rails 3.2 and prevents the Rails environment from
+    # being loaded when the assets:precompile task is executed. Because Heroku
+    # precompiles assets before setting the database configuration, you need to
+    # set this configuration to false or the app will try to
+    # connect to a non-existant database.
+    config.assets.initialize_on_precompile = false
   end
 end

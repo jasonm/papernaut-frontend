@@ -17,6 +17,7 @@ describe "signing in via Zotero OAuth" do
       page.should have_content('An application would like to connect to your account')
       click_button 'Accept Defaults'
 
+      page.should have_css('html') # wait for load
       page.should have_content('Matches for jayunit from Zotero')
     end
   end

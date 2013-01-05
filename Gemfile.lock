@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/jasonm/omniauth-mendeley.git
+  revision: 79bcab9ec5ffac01689270ca22aed9bfff369af6
+  specs:
+    omniauth-mendeley (0.2)
+      omniauth-oauth (~> 1.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -134,8 +141,6 @@ GEM
     omniauth (1.1.0)
       hashie (~> 1.2)
       rack
-    omniauth-mendeley (0.2)
-      omniauth-oauth (~> 1.0.0)
     omniauth-oauth (1.0.1)
       oauth
       omniauth (~> 1.0)
@@ -270,7 +275,7 @@ DEPENDENCIES
   high_voltage
   jquery-rails
   omniauth
-  omniauth-mendeley
+  omniauth-mendeley!
   omniauth-oauth
   omniauth-zotero
   pg

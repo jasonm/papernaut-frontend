@@ -2,8 +2,7 @@
   <div class="span12 offset0">
     <h2>Statistics for the matching engine</h2>
     <%# TODO: extract to its own controller and clean this up %>
-    <% begin %>
-      <% @stats = EngineStats.stats %>
+    <% if @stats = EngineStats.stats %>
       <table class="table table-bordered table-striped">
         <thead>
           <tr>
@@ -20,7 +19,7 @@
           <% end %>
         </tbody>
       </table>
-    <% rescue Faraday::Error::ConnectionFailed %>
+    <% else %>
       <p class="text-error">The matching engine is not reachable at the moment.</p>
     <% end %>
   </div>

@@ -76,3 +76,8 @@ Getting Started
 10. Run the application:
 
         foreman start
+
+Deploying to production
+-----------------------
+
+See `DEPLOY.md` for information about deploying.

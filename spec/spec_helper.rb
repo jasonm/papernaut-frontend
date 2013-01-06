@@ -16,7 +16,7 @@ VCR.configure do |c|
     host = URI(request.uri).host
 
     request_is_local = VCR::RequestIgnorer::LOCALHOST_ALIASES.include?(host) 
-    request_is_to_engine = (request.uri == URI(JOURNAL_CLUB_ENGINE_URL))
+    request_is_to_engine = (request.uri == URI(PAPERNAUT_ENGINE_URL))
 
     request_is_local && !request_is_to_engine
   end

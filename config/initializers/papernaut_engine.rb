@@ -1,0 +1,1 @@
+PAPERNAUT_ENGINE_URL = ENV['PAPERNAUT_ENGINE_URL'] || 'http://localhost:3001'

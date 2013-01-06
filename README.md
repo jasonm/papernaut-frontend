@@ -81,3 +81,8 @@ Deploying to production
 -----------------------
 
 See `DEPLOY.md` for information about deploying.
+
+License
+-------
+
+See `LICENSE` file.

@@ -32,23 +32,25 @@ best it can in an attempt to find the most matches.
 Getting Started
 ---------------
 
-1.  Register for Mendeley at <https://www.mendeley.com/join/>.  Register for a
+1.  Set up and run the [papernaut-engine](http://github.com/jasonm/papernaut-engine).
+
+2.  Register for Mendeley at <https://www.mendeley.com/join/>.  Register for a
     Mendeley OAuth key at <http://dev.mendeley.com>.
 
-2.  Register for Zotero at <https://www.zotero.org/user/register/>.  Register
+3.  Register for Zotero at <https://www.zotero.org/user/register/>.  Register
     for a Zotero OAuth key at <http://www.zotero.org/oauth/apps>.
 
-3.  Install Redis, used by Sidekiq.
+4.  Install Redis, used by Sidekiq.
 
-4.  Install gems:
+5.  Install gems:
 
         bundle install
 
-5.  Create and migrate the databases.  PostgreSQL is used by default.
+6.  Create and migrate the databases.  PostgreSQL is used by default.
 
         rake db:create db:migrate db:test:prepare
 
-6.  Create and edit the Foreman `.env` file to specify the web port and your API keys:
+7.  Create and edit the Foreman `.env` file to specify the web port and your API keys:
 
         PORT=3000
         MENDELEY_OAUTH_CONSUMER_KEY=api_key
@@ -56,7 +58,7 @@ Getting Started
         ZOTERO_OAUTH_CONSUMER_KEY=api_key
         ZOTERO_OAUTH_CONSUMER_SECRET=api_secret
 
-7.  For the automated tests to connect to Zotero via OAuth, provide your Zotero
+8.  For the automated tests to connect to Zotero via OAuth, provide your Zotero
     credentials in `.env`:
 
         ZOTERO_USERNAME=zotero.user@example.com
@@ -64,16 +66,16 @@ Getting Started
 
     These are loaded in the test environment by the [`dotenv` gem](https://rubygems.org/gems/dotenv).
 
-8.  If you chose a non-default URL for the papernaut-engine, also add a line to `.env`
+9.  If you chose a non-default URL for the papernaut-engine, also add a line to `.env`
     to specify its location.  The default is <http://localhost:3001>.
 
         PAPERNAUT_ENGINE_URL=http://localhost:3001
 
-9.  Run the test suite to ensure things work on your system:
+10.  Run the test suite to ensure things work on your system:
 
         rake
 
-10. Run the application:
+11. Run the application:
 
         foreman start
 

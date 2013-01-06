@@ -1,5 +1,6 @@
 require 'omniauth-zotero'
 require_relative './mendeley'
+require_relative './zotero'
 
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
@@ -208,11 +209,9 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  zotero_key = '40b254ff45835ab31cdf'
-  zotero_secret = 'e32947c055c489eda7b4'
 
   # TODO: is scope needed?
-  config.omniauth :zotero, zotero_key, zotero_secret, :scope => 'user'
+  config.omniauth :zotero, ZOTERO_OAUTH_CONSUMER_KEY, ZOTERO_OAUTH_CONSUMER_SECRET, :scope => 'user'
 
   # TODO: is scope needed?
   config.omniauth :mendeley, MENDELEY_OAUTH_CONSUMER_KEY, MENDELEY_OAUTH_CONSUMER_SECRET, :scope => 'user'

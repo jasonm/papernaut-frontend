@@ -25,6 +25,8 @@ class Discussion
     response = get_http(url)
     discussion_hashes = JSON.parse(response.body)
     discussion_hashes.map { |hash| self.new(hash) }
+  rescue JSON::ParserError => e
+    raise EngineUnreachableException.new
   end
 
   attr_accessor :article

@@ -44,6 +44,7 @@ group :development do
   gem 'pry'
   gem 'pry-rails'
   gem 'guard-livereload'
+  gem 'foreman'
 end
 
 group :development, :darwin do

@@ -14,14 +14,8 @@
         <p class="paper-title"><span class="meta">Paper</span>: <%= discussion.article.title %></p>
       </div>
     <% end %>
-
-    <p>
-      <%= pluralize @number_of_articles_without_discussions, "more paper" %> without discussions.
-    </p>
   <% else %>
-    <p class="text-warning">Sorry, we couldn't find any discussions for your
-      <%= pluralize @number_of_articles_without_discussions, "paper" %>.
-    </p>
+    <p class="text-warning">Sorry, we couldn't find any discussions for your papers.</p>
   <% end %>
 
   <div class="add-more-papers well">

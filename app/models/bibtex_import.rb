@@ -8,6 +8,7 @@ class BibtexImport
   include ActiveModel::Conversion
 
   attr_accessor :file, :bibtex_source, :user
+  attr_reader :filename
 
   def initialize(attributes = {})
     attributes.each do |name, value|
@@ -19,9 +20,11 @@ class BibtexImport
     false
   end
 
+  # TODO test case demonstrating need for read-binary and UTF-8
   def file=(new_file)
-    @file = new_file
-    @bibtex_source = new_file.read
+    @file = File.open(new_file.path, 'rb')
+    @filename = new_file.original_filename || 'No file' rescue 'No file'
+    @bibtex_source = @file.read.force_encoding("UTF-8")
   end
 
   def new_articles
@@ -34,10 +37,6 @@ class BibtexImport
 
   def save
     new_articles.each(&:save)
-  end
-
-  def filename
-    @file.try(:original_filename) || 'No file'
   end
 
   private

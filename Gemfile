@@ -72,7 +72,7 @@ end
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
-gem 'thin'
+gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'

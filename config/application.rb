@@ -65,5 +65,8 @@ module PapernautFrontend
     # set this configuration to false or the app will try to
     # connect to a non-existant database.
     config.assets.initialize_on_precompile = false
+
+    # http://blog.codeship.io/2012/05/06/Unicorn-on-Heroku.html
+    config.logger = Logger.new(STDOUT)
   end
 end

@@ -141,3 +141,14 @@ describe BibtexImport::Entry, "importing PMIDs" do
   end
 end
 
+describe BibtexImport::Entry, "importing long fields" do
+  it 'truncates title to 1024 characters' do
+    entry = BibtexImport::Entry.new({ 'title' => "x" * 1025 })
+    entry.article_attributes[:title].size.should == 1024
+  end
+
+  it 'truncates author to 1024 characters' do
+    entry = BibtexImport::Entry.new({ 'author' => "x" * 1025 })
+    entry.article_attributes[:author].size.should == 1024
+  end
+end

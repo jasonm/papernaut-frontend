@@ -1,6 +1,9 @@
 require 'bibtex'
 
 class BibtexImport
+  MAX_AUTHOR_LENGTH = 1024
+  MAX_TITLE_LENGTH = 1024
+
   extend ActiveModel::Naming
   include ActiveModel::Conversion
 
@@ -62,8 +65,8 @@ class BibtexImport
 
     def article_attributes
       {
-        title: strip_latex_html_tags(@data['title'].to_s),
-        author: strip_latex_html_tags(@data['author'].to_s),
+        title: strip_latex_html_tags(@data['title'].to_s).truncate(MAX_TITLE_LENGTH),
+        author: strip_latex_html_tags(@data['author'].to_s).truncate(MAX_AUTHOR_LENGTH),
         source: "bibtex",
         identifiers: identifiers
       }

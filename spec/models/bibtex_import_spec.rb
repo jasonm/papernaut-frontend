@@ -85,6 +85,20 @@ describe BibtexImport::Entry do
   end
 end
 
+describe BibtexImport::Entry, "importing URL identifiers" do
+  it 'parses url field' do
+    attributes_should_yield_identifiers({ 'url' => 'http://n.com/123' }, ['URL:http://n.com/123'])
+  end
+
+  it 'discards URLs with hostname-only' do
+    attributes_should_yield_identifiers({ 'url' => 'http://n.com' }, [])
+  end
+
+  it 'gracefully handles invalid URIs' do
+    attributes_should_yield_identifiers({ 'url' => 123 }, [])
+  end
+end
+
 describe BibtexImport::Entry, "with DOI verification" do
   it 'imports DOI field' do
     fake_doi = double(exists?: true)

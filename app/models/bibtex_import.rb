@@ -88,12 +88,21 @@ class BibtexImport
     def identifier_pairs
       {
         doi: parse_and_validate_doi,
-        url: @data['url'],
+        url: parse_url,
         issn: @data['issn'],
         isbn: @data['isbn'],
         pmid: parse_pmid,
         pmcid: parse_pmcid
       }
+    end
+
+    def parse_url
+      if @data['url']
+        uri = URI.parse(@data['url'])
+        uri.to_s if uri.path.present?
+      end
+    rescue URI::InvalidURIError
+      nil
     end
 
     def parse_and_validate_doi

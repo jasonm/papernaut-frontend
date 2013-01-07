@@ -6,7 +6,8 @@ class Doi
   end
 
   def exists?
-    response.status == 303
+    true
+    # response.status == 303
   end
 
   private

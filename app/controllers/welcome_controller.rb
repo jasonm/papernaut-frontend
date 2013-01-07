@@ -4,7 +4,5 @@ class WelcomeController < ApplicationController
       redirect_to :discussions
       return
     end
-
-    @suppress_navigation = true
   end
 end

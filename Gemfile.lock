@@ -136,6 +136,7 @@ GEM
     mime-types (1.19)
     multi_json (1.5.0)
     multipart-post (1.1.5)
+    newrelic_rpm (3.5.4.34)
     nokogiri (1.5.5)
     oauth (0.4.6)
     omniauth (1.1.0)
@@ -274,6 +275,7 @@ DEPENDENCIES
   guard-livereload
   high_voltage
   jquery-rails
+  newrelic_rpm
   omniauth
   omniauth-mendeley!
   omniauth-oauth

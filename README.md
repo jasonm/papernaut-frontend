@@ -87,4 +87,16 @@ See `DEPLOY.md` for information about deploying.
 License
 -------
 
-See `LICENSE` file.
+See `LICENSE` file for the license applying to the code base.
+
+The "Space Boy" graphic used in the homepage logo is by Russell Tate and is
+licensed from iStockPhoto.com:
+
+http://www.istockphoto.com/stock-illustration-1087779-space-boy.php
+
+The graphic is licensed for a single-seat install and is in use at
+http://www.papernautapp.com.  It is not licensed for multi-seat use, so any
+other installations should purchase a separate license or use a different
+image.
+
+http://www.istockphoto.com/help/licenses
